@@ -84,7 +84,6 @@ export function validateSignInForm() {
       setErrorFor(password_input, error);
     });
   }
-  console.log(emailValidationResult , passwordValidationResult);
   if (emailValidationResult && passwordValidationResult) {
     return true;
   }

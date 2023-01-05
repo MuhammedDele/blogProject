@@ -20,7 +20,6 @@ let notification = new NotificationService();
 
 function login() {
   const validationResult = validateSignInForm();
-  console.log(validationResult);
   if (!validationResult) {
     return;
   }

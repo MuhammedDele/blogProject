@@ -5,13 +5,10 @@ import { NotificationService } from "../../../shared/services/NotificationServic
 import { validateSignUpForm } from "../validation";
 //import validation
 // initSignUpPage();
-document.getElementById("signup_btn").addEventListener(
-  "click",
-  (e) => {
-    e.preventDefault();
-    signup();
-  }
-);
+document.getElementById("signup_btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  signup();
+});
 
 let authService = new AuthService();
 let notification = new NotificationService();
@@ -19,7 +16,6 @@ let notification = new NotificationService();
 function signup() {
   // const  vResuukt = call validateSignUpForm()
   const validationResult = validateSignUpForm();
-  console.log(validationResult);
   if (!validationResult) {
     return;
   }
@@ -32,7 +28,6 @@ function signup() {
   };
 
   if (authService.checkIfEmailExist(model.email)) {
-    console.log("email in use");
     notification.error("Email In Use");
     return;
   }
@@ -40,10 +35,9 @@ function signup() {
   if (isInserted) {
     notification.success("Account Created ! .. You can Sign In now");
     setTimeout(() => {
-      // window.location.href = "signin.html";
+      window.location.href = "signin.html";
     }, 5000);
   } else {
     notification.error("SomeThing Wrong");
   }
 }
-document.getElementById("signup_btn").addEventListener("click", signup, true);

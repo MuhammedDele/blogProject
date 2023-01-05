@@ -36,7 +36,6 @@ export class AuthService {
   checkIfEmailExist(email) {
     const users = this.#dbContext.getData();
     if (users) {
-      console.log(users.findIndex((x) => x.email === email) , email);
       return users.findIndex((x) => x.email === email) !== -1 ? true : false;
     }
     return false;

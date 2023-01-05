@@ -29,7 +29,6 @@ function validate(e) {
   const formData = validateForm(titleInput, contentInput, authorNameInput);
 
   if (formData != null) {
-    console.log(formData);
     blogService.updateBlog(blogId, formData);
     window.location.assign("./blog-list.html");
   }
