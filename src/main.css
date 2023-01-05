@@ -1,4 +1,4 @@
-/* *,
+*,
 *::after,
 *::before {
   -webkit-box-sizing: border-box;
@@ -267,7 +267,7 @@ nav .nav-link:hover {
 .main-slider .hero-img {
   position: relative;
   height: 100%;
-  background-image: url("../img/building-1727807_1920.jpg");
+  background-image: url("../src/assets/images/building-1727807_1920.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -896,4 +896,4 @@ footer .copyright p a {
   .sidebar .popular .card-img-overlay .article-meta span {
     padding-right: 10px;
   }
-} */
+}

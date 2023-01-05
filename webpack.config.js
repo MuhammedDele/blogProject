@@ -2,11 +2,11 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const glob = require("glob");
 
-
 let plugins = [
   new HtmlWebpackPlugin({
     title: "index page",
     filename: "index.html",
+    template: "src/index.html",
     chunks: ["main"],
   }),
 ];
@@ -47,7 +47,7 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
   },
-  
+
   module: {
     rules: [
       {
@@ -71,24 +71,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ["style-loader", "css-loader"],
       },
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     "style-loader",
-      //     {
-      //       loader: "css-loader",
-      //       options: {
-      //         importLoaders: 1,
-      //         modules: true,
-      //       },
-      //     },
-      //   ],
-      // },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
@@ -122,7 +106,7 @@ glob.sync("./src/features/**/*.html").forEach((file) => {
     new HtmlWebpackPlugin({
       template: file,
       filename: `./features/${componentName}.html`,
-      chunks: ["main" , componentName],
+      chunks: [ componentName],
     })
   );
 });
