@@ -4,6 +4,7 @@ import validateForm from "../validateForm.js";
 
 const form = document.querySelector(".edit-blog-form");
 document.getElementById("signOut_id").addEventListener("click", signOut);
+document.getElementById("back-btn").addEventListener("click", backBtn);
 const titleInput = document.getElementById("title");
 const contentInput = document.getElementById("content");
 const authorNameInput = document.getElementById("authorName");
@@ -36,4 +37,7 @@ function validate(e) {
 
 function signOut() {
   authService.signOut();
+}
+function backBtn() {
+  window.location.href = "/features/blog-list.html";
 }
