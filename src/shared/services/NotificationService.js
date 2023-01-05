@@ -1,8 +1,7 @@
 import Swal from "sweetalert2";
 
-
 export class NotificationService {
-  async success(msg) {
+  success(msg) {
     Swal.fire({
       title: "success!",
       text: msg,
@@ -11,7 +10,7 @@ export class NotificationService {
     });
   }
 
-  error(msg){
+  error(msg) {
     Swal.fire({
       title: "Error!",
       text: msg,

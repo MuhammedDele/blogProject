@@ -126,7 +126,7 @@ export function validatePasswordInput(passwordValue) {
     passwordErrors.push("Password cannot be blank");
     return false; 
   } else if (passwordValue.length < 8) {
-    passwordErrors.push("your Password should be more than 8 character");
+    passwordErrors.push("your Password should be more than or equal to 8 character");
     return false; 
   } else {
     return true;
@@ -139,7 +139,8 @@ export function validatePassword2Input(password1value, password2value) {
   } else if (password1value !== password2value) {
     password2Errors.push("Passwords does not match");
     return false; 
-  } else if (password2value < 8) { 
+  } else if ((password2value.length < 8) && (password2value === password1value)) {
+    password2Errors.push("Invalid Password")
     return false; 
   }else {
     return true;
@@ -150,7 +151,7 @@ export function validateFullNameInput(fullNameValue) {
     fullNameErrors.push("Username cannot be blank");
     return false; 
   } else if (fullNameValue.length < 5) {
-    fullNameErrors.push("Your full Name must be more than 5 character");
+    fullNameErrors.push("Your full Name must be more than or equal 5 character");
     return false; 
   } else {
     return true;

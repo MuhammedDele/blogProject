@@ -29,9 +29,13 @@ export default function createBlog(formData) {
     manageBlog.className = "row mt-4 d-flex flex-row-reverse";
 
     const editButton = document.createElement("a");
-    editButton.href = `./edit-blog.html/${formData["id"]}`;
+    editButton.href = `./edit-blog.html`;
     editButton.className = "btn btn-success m-2 col-md-2";
     editButton.innerText = "Edit Blog";
+
+    editButton.addEventListener("click", () => {
+        localStorage.setItem("blogId", formData["id"]);
+    })
 
     
     const deleteButton = document.createElement("a");

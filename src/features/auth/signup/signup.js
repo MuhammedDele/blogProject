@@ -1,6 +1,5 @@
 import "./signup.css";
 import "../auth.css";
-import { initSignUpPage } from "../validation.js";
 import { AuthService } from "../../../shared/services/authService";
 import { NotificationService } from "../../../shared/services/NotificationService";
 import { validateSignUpForm } from "../validation";
@@ -11,14 +10,13 @@ document.getElementById("signup_btn").addEventListener(
   (e) => {
     e.preventDefault();
     signup();
-  },
-  true
+  }
 );
 
 let authService = new AuthService();
 let notification = new NotificationService();
 
-async function signup() {
+function signup() {
   // const  vResuukt = call validateSignUpForm()
   const validationResult = validateSignUpForm();
   console.log(validationResult);
@@ -34,13 +32,16 @@ async function signup() {
   };
 
   if (authService.checkIfEmailExist(model.email)) {
+    console.log("email in use");
     notification.error("Email In Use");
     return;
   }
   const isInserted = authService.register(model);
   if (isInserted) {
-    await notification.success("Account Created ! .. You can Sign In now");
-    window.location.href = "signin.html";
+    notification.success("Account Created ! .. You can Sign In now");
+    setTimeout(() => {
+      // window.location.href = "signin.html";
+    }, 5000);
   } else {
     notification.error("SomeThing Wrong");
   }

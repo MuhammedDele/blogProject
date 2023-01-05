@@ -13,6 +13,13 @@ export class AuthService {
     const user = this.#dbContext
       .getData()
       .find((x) => x.email === email && x.password === password);
+    localStorage.setItem(
+      "currentUser",
+      JSON.stringify({
+        email: user.email,
+        fullName: user.fullName,
+      })
+    );
     return user;
   }
 
@@ -29,7 +36,18 @@ export class AuthService {
   checkIfEmailExist(email) {
     const users = this.#dbContext.getData();
     if (users) {
+      console.log(users.findIndex((x) => x.email === email) , email);
       return users.findIndex((x) => x.email === email) !== -1 ? true : false;
+    }
+    return false;
+  }
+
+  signOut() {
+    const currentUser = localStorage.getItem("currentUser");
+    if (currentUser != null) {
+      localStorage.removeItem("currentUser");
+      window.location.assign("/index.html");
+      return true;
     }
     return false;
   }

@@ -4,11 +4,11 @@ export default class DbService {
   }
 
   saveChanges(payload) {
-    localStorage.setItem(this.key , JSON.stringify(payload));
+    localStorage.setItem(this.key, JSON.stringify(payload));
   }
 
-  getData(){
-    return JSON.parse(localStorage.getItem(this.key))
+  getData() {
+    return JSON.parse(localStorage.getItem(this.key));
   }
- 
+
 }
